@@ -7,7 +7,7 @@ const Item = ({ prod }) => {
 
     return (
         <Col>
-            <Card as={Link} to={`/item/${prod.id}`}>
+            <Card className="text-decoration-none text-body" as={Link} to={`/item/${prod.id}`}>
                 <Card.Img variant="top" src={prod.thumbnail} />
                 <Card.Body>
                     <Card.Title>{prod.title}</Card.Title>
