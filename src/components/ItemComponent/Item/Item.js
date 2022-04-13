@@ -8,10 +8,10 @@ const Item = ({ prod }) => {
     return (
         <Col>
             <Card className="text-decoration-none text-body" as={Link} to={`/item/${prod.id}`}>
-                <Card.Img variant="top" src={prod.thumbnail} />
+                <Card.Img variant="top" src={prod.thumbnails[1]} />
                 <Card.Body>
-                    <Card.Title>{prod.title}</Card.Title>
-                    <Card.Text>
+                    <Card.Title as="h3">${prod.price}</Card.Title>
+                    <Card.Text className="text-muted">
                         {prod.description}
                     </Card.Text>
                 </Card.Body>
