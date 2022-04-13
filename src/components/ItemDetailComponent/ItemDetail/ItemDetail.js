@@ -1,10 +1,22 @@
-
+import { useState } from 'react'
 import Col from 'react-bootstrap/Col'
 import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Carousel from 'react-bootstrap/Carousel'
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
+import ItemCounter from "../../ItemCounter/ItemCounter"
+import { useCartContext } from '../../../context/CartContext'
 
 const ItemDetail = ({ product }) => {
+
+    const [wasClicked, setWasClicked] = useState(false);
+    const { addItem } = useCartContext()
+
+    const onAdd = (newValue) => {
+        setWasClicked(true);
+        addItem(product, newValue);
+    }
 
     return (
         <>
@@ -14,7 +26,7 @@ const ItemDetail = ({ product }) => {
                         <Col md={6} lg={{ span: 5 }}>
                             <Carousel variant="dark">
                                 {
-                                    Object.entries(product.thumbnails).map((key, i ) => 
+                                    Object.entries(product.thumbnails).map((key, i) =>
                                         <Carousel.Item key={i}>
                                             <img
                                                 className="d-block w-100"
@@ -23,7 +35,6 @@ const ItemDetail = ({ product }) => {
                                             />
                                         </Carousel.Item>
                                     )
-                               
                                 }
                             </Carousel>
                         </Col>
@@ -32,7 +43,14 @@ const ItemDetail = ({ product }) => {
                                 <Card.Title className="fs-2">{product.title}</Card.Title>
                                 <Card.Text className="fs-2">${product.price}</Card.Text>
                                 <Card.Text className="my-5 text-start">{product.description}</Card.Text>
+                                <div className="text-center">
+                                    {wasClicked ?
+                                        <Button as={Link} to={'/cart'} variant="success">Terminar Compra</Button> :
+                                        <ItemCounter prodId={product.id} stock={product.stock} initial={0} onAdd={onAdd} ></ItemCounter>
+                                    }
+                                </div>
                             </Card.Body>
+
                         </Col>
                     </Row>
                 </Card>
@@ -40,8 +58,8 @@ const ItemDetail = ({ product }) => {
             <Row xs={1} sm={1} md={3} lg={4} className="g-4">
                 {
                     Object.entries(product.features).map((feature, i) =>
-                        <Col>
-                            <Card border="light" key={i} className="shadow p-0">
+                        <Col key={i}>
+                            <Card border="light" className="shadow p-0">
                                 <Card.Header className="p-0">{feature.at(0)}</Card.Header>
                                 <Card.Body className="text-start ">
                                     {
