@@ -42,8 +42,12 @@
   color: #8C1BF8;
 }
 
-.borders_form {
+.border_form {
   border-left: 2px solid rgb(194, 194, 194);
+}
+
+.border_star {
   border-right: 2px solid rgb(194, 194, 194);
 }
+
 
