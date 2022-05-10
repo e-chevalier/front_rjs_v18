@@ -2,10 +2,10 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate
 } from "react-router-dom";
 import './App.css';
 import ItemListContainer from "./components/ItemComponent/ItemListContainer/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetailComponent/ItemDetailContainer/ItemDetailContainer";
 import NavigationBar from "./components/NavigationBarComponent/NavigationBar";
 import CartContextProvider from "./context/CartContext";
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -19,8 +19,8 @@ function App() {
         <BrowserRouter>
           <NavigationBar />
           <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path='item/:id' element={<ItemDetailContainer />} />
+            <Route path="/characters" element={<ItemListContainer />} />
+            <Route path="*" element={<Navigate replace to="/characters" />} />
           </Routes>
         </BrowserRouter>
       </CartContextProvider>
