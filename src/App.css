@@ -38,3 +38,12 @@
   opacity: 0.8;
 }
 
+.color_purple {
+  color: #8C1BF8;
+}
+
+.borders_form {
+  border-left: 2px solid rgb(194, 194, 194);
+  border-right: 2px solid rgb(194, 194, 194);
+}
+
