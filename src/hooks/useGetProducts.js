@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import getProducts from '../services/GetProducts/getProducts'
+//import getProducts from '../services/GetProducts/getProducts'
+import getFetch from "../services/GetProducts/getFetch";
 
 const useGetProducts = (id = 0) => {
 
@@ -7,7 +8,7 @@ const useGetProducts = (id = 0) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getProducts(id)
+        getFetch(id)
             .then(res => {
                 setProducts(res)
             })
