@@ -1,12 +1,7 @@
-import { useState, useEffect } from 'react';
 import "../../App.css";
 import { Link } from "react-router-dom";
-import Loading from "../LoadingComponent/Loading";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import useGetProducts from '../../hooks/useGetProducts';
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button';
@@ -14,25 +9,7 @@ import Button from 'react-bootstrap/Button';
 
 const NavigationBar = () => {
 
-  const [products, loadingProducts] = useGetProducts();
-  const [codes, setCodes] = useState([]);
-  const [loadingCodes, setLoadingCodes] = useState(true);
-
-  useEffect(() => {
-    if (!loadingProducts) {
-      const arrayTemp = [];
-      products.forEach(prod => { if (!(arrayTemp.includes(prod.code))) { arrayTemp.push(prod.code) } });
-      setCodes(arrayTemp);
-      setLoadingCodes(false);
-    }
-    return () => {
-      setLoadingCodes(true);
-    }
-  }, [products, loadingProducts])
-
   return (
-    loadingCodes ? <Loading />
-      :
       <header>
         <Container fluid>
           <Navbar bg="light" expand="lg">
@@ -44,7 +21,7 @@ const NavigationBar = () => {
 
               <Form action="/characters?Spider=1" className="d-flex w-100 px-1 border_form" method='GET'>
                 <Button variant="bg-light text-secondary" type="submit">
-                  <i class="bi bi-search"></i>
+                  <i className="bi bi-search"></i>
                 </Button>
                 <FormControl
                   type="search"
