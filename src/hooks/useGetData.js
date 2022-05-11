@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-//import getProducts from '../services/GetProducts/getProducts'
 import getFetch from "../services/GetProducts/getFetch";
 
-const useGetProducts = (id = 0) => {
+const useGetData = (id = 0) => {
 
     console.log("id "+ id)
     const [products, setProducts] = useState([])
@@ -27,4 +26,4 @@ const useGetProducts = (id = 0) => {
     return [products, loading]
 }
 
-export default useGetProducts
+export default useGetData

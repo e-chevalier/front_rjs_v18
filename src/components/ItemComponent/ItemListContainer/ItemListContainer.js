@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import Container from 'react-bootstrap/Container'
-import useGetProducts from '../../../hooks/useGetProducts'
+import useGetData from '../../../hooks/useGetData'
 import Loading from '../../LoadingComponent/Loading'
 import { useSearchParams } from 'react-router-dom'
 
@@ -14,8 +14,8 @@ const ItemListContainer = () => {
     const params = Object.fromEntries([...searchParams]);
     //console.log('Mounted:', params);
     console.log(Object.keys(params)[0])
-    const queryParamToSeach =  Object.keys(params)[0]
-    console.log(queryParamToSeach)
+    const queryParamToSearch =  Object.keys(params)[0]
+    console.log(queryParamToSearch)
 
     useEffect(() => {
         // read the params on component load and when any changes occur 
@@ -26,7 +26,7 @@ const ItemListContainer = () => {
         //setSearchParams({ sort: 'name', order: 'ascending' });
     }, [searchParams]);
 
-    const [products, loading] = useGetProducts(queryParamToSeach)
+    const [products, loading] = useGetData(queryParamToSearch)
 
     return (
         loading ?
