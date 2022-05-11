@@ -4,6 +4,7 @@ import getFetch from "../services/GetProducts/getFetch";
 
 const useGetProducts = (id = 0) => {
 
+    console.log("id "+ id)
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(true);
 
