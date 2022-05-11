@@ -50,4 +50,8 @@
   border-right: 2px solid rgb(194, 194, 194);
 }
 
+.card_maxSize {
+  max-width: 18rem;
+}
+
 
