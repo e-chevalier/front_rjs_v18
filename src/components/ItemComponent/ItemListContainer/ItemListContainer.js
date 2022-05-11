@@ -26,14 +26,14 @@ const ItemListContainer = () => {
         //setSearchParams({ sort: 'name', order: 'ascending' });
     }, [searchParams]);
 
-    const [products, loading] = useGetData(queryParamToSearch)
+    const [data, loading] = useGetData(queryParamToSearch)
 
     return (
         loading ?
             <Loading />
             :
             <Container id="cards" className="py-5 my-5">
-                <ItemList products={products} />
+                <ItemList data={data} />
             </Container>
     )
 }

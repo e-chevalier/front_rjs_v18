@@ -1,3 +1,15 @@
+const getRandomCharacter = () => {
+
+    let result = 0
+
+    do {
+        result = Math.random().toString(36).substring(2, 3);
+    } while (!isNaN(Number(result)))
+
+    return result
+
+}
+
 const getFetch = async (id = 0) => {
 
     try {
@@ -17,18 +29,6 @@ const getFetch = async (id = 0) => {
     } catch (err) {
         return console.log(err)
     }
-
-}
-
-const getRandomCharacter = () => {
-
-    let result = 0
-
-    do {
-        result = Math.random().toString(36).substring(2, 3);
-    } while (!isNaN(Number(result)))
-
-    return result
 
 }
 

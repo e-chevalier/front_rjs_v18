@@ -1,16 +1,16 @@
 import Item from '../Item/Item'
 import Row from 'react-bootstrap/Row'
 
-const ItemList = ({ products }) => {
+const ItemList = ({ data }) => {
 
-  console.log("Productos length: " + products.length)
+  //console.log("Productos length: " + data.length)
 
   return (
-    products.length > 0?
+    data.length > 0?
     <>     
       <Row xs={1} sm={2} md={2} lg={3} className="g-4">
         {
-          products.map(prod =>
+          data.map(prod =>
               <Item key={prod.id} prod={prod} />
           )
         }

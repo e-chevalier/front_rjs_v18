@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
-import getFetch from "../services/GetProducts/getFetch";
+import getFetch from "../services/GetData/getFetch.js";
 
 const useGetData = (id = 0) => {
 
     console.log("id "+ id)
-    const [products, setProducts] = useState([])
+    const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getFetch(id)
             .then(res => {
-                setProducts(res)
+                setData(res)
             })
             .catch(err => console.log(err))
             .finally(() => {
                 setLoading(false);
-                console.log('GetProducts Finalizada');
+                console.log('GetData Finalizada');
             });
 
         return () => {
@@ -23,7 +23,7 @@ const useGetData = (id = 0) => {
         }
     }, [id])
 
-    return [products, loading]
+    return [data, loading]
 }
 
 export default useGetData
